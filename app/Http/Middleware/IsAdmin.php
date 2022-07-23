@@ -16,21 +16,22 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->is_admin == 0){
+        if(auth()->check() && auth()->user()->is_admin == 0){
 
             return $next($request);
             // return redirect()->route('admin.home');
 
-        }elseif(auth()->user()->is_admin == 1){
+        }elseif(auth()->check() && auth()->user()->is_admin == 1){
             return $next($request);
             // return redirect()->route('reservator.home');
 
-        }elseif(auth()->user()->is_admin == 2){
+        }elseif(auth()->check() && auth()->user()->is_admin == 2){
             return $next($request);
             // return redirect()->route('home');
         }else{
+            return redirect()->route('login');
 
-            return redirect('/')->with('error',"You don't have admin access.");
+            // return redirect('/login')->with('error',"You don't have admin access.")
         }
 
 

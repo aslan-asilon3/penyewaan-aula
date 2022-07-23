@@ -17,15 +17,6 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function adminHome()
-    {
-        return view('admin.home');
-    }
-
-    public function reservatorHome()
-    {
-        return view('reservator.home');
-    }
 
 
 }

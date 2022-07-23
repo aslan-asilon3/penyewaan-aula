@@ -35,8 +35,8 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item active"><a class="nav-link" href="/">Landing Page</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/registerl">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -45,18 +45,18 @@
         <!--================Header Area =================-->
 
         <!--================Banner Area =================-->
-        <section class="banner_area">
+        <section class="banner_area" style="margin-top:30px">
             <div class="booking_table d_flex align-items-center">
             	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
 
-                <div class="hotel_booking_area position " style="margin-top-30px">
+                <div class="hotel_booking_area position " style="margin-top:30px">
                     <div class="container">
                         <div class="banner_content text-center">
-                            <h2>Sistem Penyewaan Ruang Aula</h2> <br>
-                            <h2>Puskesmas Kecamatan Kemayoran</h2>
-                            <a href="#" class="btn theme_btn button_hover">Get Started</a>
+                            <h2>Sistem Informasi Penyewaan Ruang Aula</h2> <br>
+                            <h3>Puskesmas Kecamatan Kemayoran</h3>
+                            {{-- <a href="#" class="btn theme_btn button_hover">Get Started</a> --}}
                         </div>
-                        <div class="hotel_booking_table" style="margin-bottom-50px;">
+                        {{-- <div class="hotel_booking_table" style="margin-bottom-50px;">
                             <div class="col-md-3">
                                 <h2>Book<br> Your Room</h2>
                             </div>
@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 

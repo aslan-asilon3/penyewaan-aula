@@ -14,7 +14,27 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in as user!') }}
+                    <h2>Anda Yakin ingin logout ?</h2>
+
+
+
+                    <a class="btn btn-primary" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                     {{ __('Logout') }}
+                    </a>
+{{--
+                    <a class="btn btn-danger" href="{{ route('admin.dashboard') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                     {{ __('Cancel') }}
+                    </a> --}}
+
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                     @csrf
+                 </form>
+
+
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    // protected $redirectTo = '/';
+    protected $redirectTo = '/login';
 
 
     public function __construct()
@@ -44,15 +44,15 @@ class LoginController extends Controller
 
             if (auth()->user()->is_admin == 0) {
 
-                return redirect()->route('admin.home');
+                return redirect()->route('admin.dashboard');
 
             }elseif(auth()->user()->is_admin == 1){
 
-                return redirect()->route('reservator.home');
+                return redirect()->route('kepalapuskesmas.dashboard');
 
             }elseif(auth()->user()->is_admin == 2){
 
-                return redirect()->route('home');
+                return redirect()->route('reservator.dashboard');
 
             }else{
 
@@ -70,5 +70,10 @@ class LoginController extends Controller
 
 
 
+    }
+
+    public function loginPage()
+    {
+        return view('auth.login');
     }
 }
