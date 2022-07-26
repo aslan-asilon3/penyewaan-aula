@@ -44,7 +44,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('admin.kelolakun') }}">
+                <a class="nav-link" href="{{ route('admin.kelolaakun') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Kelola Akun</span></a>
             </li>
@@ -174,26 +174,55 @@
                                 ADD FORM
                             </div>
                             <div class="card-body">
-                                <form>
-                                    <div class="mb-3">
-                                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                <form action="{{ route('adminKelolaAkunStore') }}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label>Nama <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="name"  />
                                     </div>
-                                    <div class="mb-3">
-                                      <label for="exampleInputPassword1" class="form-label">Password</label>
-                                      <input type="password" class="form-control" id="exampleInputPassword1">
+                                    <div class="form-group">
+                                        <label>Email <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="email" name="email"  />
                                     </div>
-                                    <div class="mb-3 form-check">
-                                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                    <div class="form-group">
+                                        <label for="desc_info">Batch</label>
+                                        <select class="form-control" name="is_admin" id="is_admin">
+                                            <option value="">-- Select Batch --</option>
+                                            @foreach ($userlist as $ul)
+                                                <option value="{{ $ul->is_admin }}">
+                                                    @if($ul->is_admin == 0 )
+                                                    Admin
+                                                    @elseif($ul->is_admin == 1 )
+                                                    Kepala Puskesmas
+                                                    @else
+                                                    Reservator
+                                                    @endif
+
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" id="filterShowForm" class="btn btn-danger"><i class="fas fa-solid fa-search"></i> Filter</button>
-                                        <button type="button" class="btn btn-success"><i class="fas fa-solid fa-file-pdf"></i> Export</button>
-                                        <button type="button" class="btn btn-danger" id="cancel-button-add"> Cancel</button>
+                                    <div class="form-group">
+                                        <label>Password <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="password" name="password" />
                                     </div>
-                                  </form>
+                                    {{-- <div class="form-group">
+                                        <label>Level <span class="text-danger">*</span></label>
+                                        {{-- <select class="form-control" name="is_admin" value=""/> --}}
+                                        {{-- @foreach($levels as $key => $val)
+                                        @if($key==old('level'))
+                                        <option value="{{ $key }}" selected>{{ $val }}</option>
+                                        @else
+                                        <option value="{{ $key }}">{{ $val }}</option>
+                                        @endif
+                                        @endforeach --}}
+                                        {{-- </select>
+                                    </div>  --}}
+                                    <div class="form-group">
+                                        <button class="btn btn-primary">Simpan</button>
+                                        <a class="btn btn-danger" href="{{ route('admin.kelolaakun') }}">Kembali</a>
+                                    </div>
+                                </form>
                             </div>
                             <div class="card-footer">
 
@@ -217,20 +246,9 @@
                             </div>
                         </div>
 
-                    <div class="d-sm-flex align-items-center justify-content-between mb-1">
-                        <div class="btn-group" id="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-danger" id="button-filter-kelolaakun"><i class="fas fa-solid fa-search"></i> Filter</button>
-                            <button type="button" class="btn btn-primary" id="button-add-kelolaakun"><i class="fas fa-plus"></i> Tambah</button>
-                            <button type="button" class="btn btn-success" id="button-upload-kelolaakun"><i class="fas fa-upload"></i> Upload</button>
+                        <div class="d-sm-flex align-items-center justify-content-between mb-1">
+                                <button type="button" class="btn btn-success" id="button-add-kelolaakun"><i class="fas fa-plus"></i> Tambah Data</button>
                         </div>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-
-                    </div>
-
                     <!-- Content Row -->
 
                     <div class="row">
@@ -245,7 +263,6 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Status</th>
@@ -254,7 +271,6 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>No</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Status</th>
@@ -262,9 +278,8 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            @forelse ($use as $u)
+                                            @foreach ($use as $u)
                                             <tr>
-                                                <td>1</td>
                                                 <td>{{ $u->name }}</td>
                                                 <td>{{ $u->email }}</td>
                                                 <td>
@@ -279,14 +294,15 @@
                                                 </td>
                                                 <td>
                                                     <button  class="btn btn-primary btn-sm">Edit</button>
-                                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                            </td>
+                                                    <a href="{{ route('adminKelolaAkunDestroy', auth()->user()->nickname) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                </td>
                                             </tr>
-                                            @empty
+                                            {{-- @empty
                                             <div class="alert alert-danger">
                                                 Data Pengguna belum Tersedia.
                                             </div>
-                                        @endforelse
+                                        @endforelse --}}
+                                        @endforeach
 
                                         </tbody>
                                     </table>

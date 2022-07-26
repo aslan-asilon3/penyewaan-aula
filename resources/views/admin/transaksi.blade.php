@@ -26,7 +26,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item ">
-                <a class="nav-link" href="{{ route('admin.kelolakun') }}">
+                <a class="nav-link" href="{{ route('admin.kelolaakun') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Kelola Akun</span></a>
             </li>
@@ -128,45 +128,80 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Transaksi</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-
-
+                    <div class="d-sm-flex align-items-center justify-content-between mb-1">
+                        <a type="button" href="" class="btn btn-success"><i class="fas fa-plus"></i> Tambah Data</a>
                     </div>
 
                     <!-- Content Row -->
 
                     <div class="row">
 
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <h1><h1 style="text-decoration:underline;">Halo {{Auth::user()->name;}} !</h1> </h1>
-                                    @if(auth()->user()->is_admin == 0)
-                                    <h1 style="font-weight:bold">Anda Login Sebagai Admin</h1>
-                                    @elseif(auth()->user()->is_admin == 1)
-                                    <h1 style="font-weight:bold">Anda Login Sebagai Kepala Puskesmas</h1>
-                                    @elseif (auth()->user()->is_admin == 2)
-                                    <h1 style="font-weight:bold">Anda Login Sebagai Reservator</h1>
-                                    @else
-                                    <div >-</div>
-                                    @endif
-                                    </h2>
+
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Transaksi</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama </th>
+                                                <th>Jenis Ruangan</th>
+                                                <th>Yg Memberikan</th>
+                                                <th>Yg Menerima</th>
+                                                <th>Waktu Mulai</th>
+                                                <th>Waktu Selesai</th>
+                                                <th>Lainnya</th>
+                                                <th>Jumlah Lainnya</th>
+                                                <th>Harga</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama </th>
+                                                <th>Jenis Ruangan</th>
+                                                <th>Yg Memberikan</th>
+                                                <th>Yg Menerima</th>
+                                                <th>Waktu Mulai</th>
+                                                <th>Waktu Selesai</th>
+                                                <th>Lainnya</th>
+                                                <th>Jumlah Lainnya</th>
+                                                <th>Harga</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            @forelse ($transaksi as $t)
+                                            <tr>
+                                                <td>1</td>
+                                                <td>{{ $t->name }}</td>
+                                                <td>{{ $t->jenisruangan }}</td>
+                                                <td>{{ $t->yangmemberikan }}</td>
+                                                <td>{{ $t->yangmenerima }}</td>
+                                                <td>{{ $t->waktumulai }}</td>
+                                                <td>{{ $t->waktuselesai }}</td>
+                                                <td>{{ $t->lainnya }}</td>
+                                                <td>{{ $t->jumlahlainnya }}</td>
+                                                <td>{{ $t->harga }}</td>
+                                                <td>
+                                                    <button  class="btn btn-primary btn-sm">Edit</button>
+                                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                            </td>
+                                            </tr>
+                                            @empty
+                                            <div class="alert alert-danger">
+                                                Data Sewa belum Tersedia.
+                                            </div>
+                                        @endforelse
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-
 
 
                 </div>

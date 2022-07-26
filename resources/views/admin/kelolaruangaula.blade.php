@@ -26,7 +26,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item ">
-                <a class="nav-link" href="{{ route('admin.kelolakun') }}">
+                <a class="nav-link" href="{{ route('admin.kelolaakun') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Kelola Akun</span></a>
             </li>
@@ -128,17 +128,8 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Data Sewa</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-
+                    <div class="d-sm-flex align-items-center justify-content-between mb-1">
+                        <a type="button" href="" class="btn btn-success"><i class="fas fa-plus"></i> Tambah Data</a>
                     </div>
 
                     <!-- Content Row -->
@@ -154,7 +145,6 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
                                                 <th>Nama Ruangan</th>
                                                 <th>Jenis</th>
                                                 <th>Keterangan</th>
@@ -164,7 +154,6 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>No</th>
                                                 <th>Nama Ruangan</th>
                                                 <th>Jenis</th>
                                                 <th>Keterangan</th>
@@ -175,7 +164,6 @@
                                         <tbody>
                                             @forelse ($ruang as $r)
                                             <tr>
-                                                <td>1</td>
                                                 <td>{{ $r->namaruangan }}</td>
                                                 <td>{{ $r->jenisruangan }}</td>
                                                 <td>{{ $r->keterangan }}</td>

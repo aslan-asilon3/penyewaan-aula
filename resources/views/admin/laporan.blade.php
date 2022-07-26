@@ -26,7 +26,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item ">
-                <a class="nav-link" href="{{ route('admin.kelolakun') }}">
+                <a class="nav-link" href="{{ route('admin.kelolaakun') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Kelola Akun</span></a>
             </li>
@@ -127,26 +127,15 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Laporan</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
+                </div>
 
                     <!-- Content Row -->
-                    <div class="row">
 
-                    aa
-
+                    <div class="d-sm-flex align-items-center justify-content-between mb-1">
+                        <div class="btn-group" id="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-danger" id="button-filter-kelolaakun"><i class="fa fa-solid fa-pdf"></i> Print Laporan</button>
+                        </div>
                     </div>
-
-
-
-                    </div>
-
-                    <!-- Content Row -->
 
                     <div class="row">
 

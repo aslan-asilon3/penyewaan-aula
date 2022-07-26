@@ -15,12 +15,16 @@ class CreateTransaksisTable extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->string('namauser',20);
-            $table->string('ruanganruangan',100);
-            $table->string('ygmemberikan',100);
-            $table->string('ygmenerima',100);
+            $table->string('name');
+            $table->string('namaruangan');
+            $table->enum('jenisruangan', ['Multifunction Hall', 'Ruang Rapat', 'Ruang Kelas']);;
+            $table->string('ygmemberikan');
+            $table->string('ygmenerima');
             $table->datetime('waktumulai');
             $table->datetime('waktuselesai');
+            $table->enum('lainnya', ['laptop','catering']);
+            $table->integer('jumlahlainnya');
+            $table->integer('harga');
             $table->timestamps();
         });
     }

@@ -500,7 +500,7 @@ button:focus {
 }
 
 .banner_area .bg-parallax {
-  background: url("../image/banner_bg.jpg") no-repeat scroll center 0/cover;
+  background: url("../image/banner_bg1.jpeg") no-repeat scroll center 0/cover;
   opacity: 0.50;
 }
 
@@ -674,7 +674,7 @@ button:focus {
 }
 
 .breadcrumb_area .bg-parallax {
-  background: url("../image/about_banner.jpg") no-repeat scroll center 0/cover;
+  background: url("../image/about_banner1.jpg") no-repeat scroll center 0/cover;
   opacity: 0.50;
   z-index: -1;
 }

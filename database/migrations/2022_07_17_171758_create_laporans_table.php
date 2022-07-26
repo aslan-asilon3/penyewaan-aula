@@ -15,8 +15,12 @@ class CreateLaporansTable extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->id();
-            $table->string('idtransaksi');
-            $table->string('bulantahun');
+            $table->string('name');
+            $table->string('namaruangan');
+            $table->enum('jenisruangan', ['Multifunction Hall', 'Ruang Rapat', 'Ruang Kelas']);;
+            $table->string('keterangan')->nullable;
+            $table->datetime('waktumulai');
+            $table->datetime('waktuselesai');
             $table->timestamps();
         });
     }

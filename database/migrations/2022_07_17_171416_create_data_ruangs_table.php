@@ -15,6 +15,9 @@ class CreateDataRuangsTable extends Migration
     {
         Schema::create('data_ruangs', function (Blueprint $table) {
             $table->id();
+            // $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')
+            //   ->references('id')->on('users')->onDelete('cascade');
             $table->string('namaruangan');
             $table->enum('jenisruangan', ['Multifunction Hall', 'Ruang Rapat', 'Ruang Kelas']);;
             $table->string('keterangan')->nullable;
